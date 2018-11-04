@@ -136,7 +136,7 @@ public class GenericMain {
     static class Orange extends Fruit implements Medicine {
         @Override
         public void printName() {
-            System.out.println("Apple");
+            System.out.println("Orange");
         }
     }
 
