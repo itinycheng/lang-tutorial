@@ -5,8 +5,9 @@ import com.tiny.lang.scala.generic.Implicits.{FruitOrdering, fruitToJuice, veget
 import scala.collection.mutable.ListBuffer
 
 /**
-  * T: contextBound （上下文界定）
-  * T <% viewBound （视图界定）
+  * T: contextBound （上下文界定），存在ContextBound[T]的隐式对象，
+  * T <% viewBound （视图界定），存在从T到ViewBound的隐式转换，
+  * view bounds are deprecated,use implicit parameter instead.
   */
 object GenericMain1 {
 
