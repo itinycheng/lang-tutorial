@@ -13,3 +13,10 @@ trait Show[-A] {
 trait Functor[F[_]] {
   def map[A, B](fa: F[A])(op: A => B): F[B]
 }
+
+trait Contravariant[F[_]] {
+  // Alternative encoding:
+  // def contraMap[A, B](f: B => A): F[A] => F[B]
+  // More typical encoding
+  def contraMap[A, B](fa: F[A])(f: B => A): F[B]
+}

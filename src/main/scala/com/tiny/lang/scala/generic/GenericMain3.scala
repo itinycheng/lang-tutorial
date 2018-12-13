@@ -60,36 +60,34 @@ object GenericMain3 {
     println(pair)
   }
 
-}
+  class Pair0[T](t1: T, t2: T) {
 
+    def first[U <: T](u: U)(op: (T, U) => T): T = {
+      op(t1, u)
+    }
 
-class Pair0[T](t1: T, t2: T) {
+    def second[U >: T](u: U)(op: (T, U) => T): T = {
+      op(t2, u)
+    }
 
-  def first[U <: T](u: U)(op: (T, U) => T): T = {
-    op(t1, u)
   }
 
-  def second[U >: T](u: U)(op: (T, U) => T): T = {
-    op(t2, u)
+  class Pair1[+T](t1: T, t2: T) {
+
+    def first[U](u: U)(op: (T, U) => U): T = {
+      t1
+    }
+
+    def second[U >: T](u: U)(op: (T, U) => U): U = {
+      t2
+    }
   }
 
-}
+  class Pair2[-T](t1: T, t2: T) {
 
-class Pair1[+T](t1: T, t2: T) {
+    def first[U](t: T): U = null.asInstanceOf[U]
 
-  def first[U](u: U)(op: (T, U) => U): T = {
-    t1
+    def second[U <: T](t: T): U = null.asInstanceOf[U]
+
   }
-
-  def second[U >: T](u: U)(op: (T, U) => U): U = {
-    t2
-  }
-}
-
-class Pair2[-T](t1: T, t2: T) {
-
-  def first[U](t: T): U = null.asInstanceOf[U]
-
-  def second[U <: T](t: T): U = null.asInstanceOf[U]
-
 }

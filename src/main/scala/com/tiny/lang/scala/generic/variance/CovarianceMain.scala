@@ -25,9 +25,10 @@ object CovarianceMain {
         override def read(s: String): Option[B] = Some(op(fa.read("").get))
       }
     }
-    val read = upcast(functor, fruitRead)
+    val cast0 = upcast(functor, fruitRead)
+    val cast1 = upcast(readFunctor, fruitRead)
     // print
-    println(foods + "\n" + foodRead + "\n" + read)
+    println(foods + "\n" + foodRead + "\n" + cast0 + '\n' + cast1)
   }
 
   val listFunctor: Functor[List] =
