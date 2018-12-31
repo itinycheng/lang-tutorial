@@ -12,11 +12,13 @@ trait BoxVisitor[-T, +R] {
     */
 
   /**
-    * def visit(t: T): R is invariance[不变], a special situation of 多态？
-    * 多态含义：childType U can be treated as ParentType
+    * def visit(t: T): R is invariance,
+    * but because of Polymorphism（多态）, it's similar as method a def bellow
+    * Polymorphism: childType U can be treated as ParentType
     */
   def visit[U <: T](u: U): R
 
+  def visit[U <: T](u: U)(op: U => T): R
 }
 
 /**
@@ -31,4 +33,5 @@ class Panda extends BoxVisitor[Bamboo, Energy] {
 
   def eat(bamboo: Bamboo) = new Energy
 
+  override def visit[U <: Bamboo](u: U)(op: U => Bamboo): Energy = eat(op(u))
 }

@@ -41,7 +41,7 @@ object GenericMain0 {
   }
 
   /**
-    * define a generic type T which has an upper bounds `Fruit`
+    * define a generic type `T `which has an upper bounds `Fruit`
     *
     */
   def test1[T <: Fruit](list: ListBuffer[T]): Unit = {
@@ -122,5 +122,21 @@ object GenericMain0 {
   /**
     *
     */
+
+  def test9[T >: Fruit](list: ListBuffer[T]): Unit = {
+    list ++= List(new Apple, new Fruit)
+    list.foreach(println)
+  }
+
+  def test10[T >: Fruit with Medicine](list: ListBuffer[T]): Unit = {
+    list ++= List(new Orange)
+    list.foreach(println)
+  }
+
+  def test11[T >: Apple with Food <: AutoCloseable with Serializable](list: ListBuffer[T]): Unit = {
+    println("-------test9---------")
+    // compile error: list ++= List(new Orange, new Apple)
+    list.foreach(println)
+  }
 
 }

@@ -1,8 +1,9 @@
 package com.tiny.lang.scala.generic
 
-import com.tiny.lang.scala.generic.Implicits.{FruitOrdering, fruitToJuice, vegetableToJuice, vegetableToSoup}
+import com.tiny.lang.scala.generic.Implicits.{fruitToJuice, ordering, vegetableToJuice, vegetableToSoup}
 
 import scala.collection.mutable.ListBuffer
+import scala.reflect.ClassTag
 
 /**
   * T: contextBound （上下文界定），存在ContextBound[T]的隐式对象，
@@ -25,7 +26,7 @@ object GenericMain1 {
     test4(new Apple, new Orange)
     // multi context-bounds
     test5(new Apple, new Orange)
-
+    test6(new Apple, new Orange)
   }
 
 
@@ -43,7 +44,7 @@ object GenericMain1 {
     */
   def test1[T](list: ListBuffer[T])(implicit fun: T => Juice): Unit = {
     println("-------test1---------")
-    list.foreach(_.printName())
+    list.foreach(i => println(i.juice))
   }
 
   /**
@@ -85,12 +86,17 @@ object GenericMain1 {
     *
     * [[test4()]]
     */
-  def test5[T: Ordering : Manifest](first: T, second: T)(implicit ordering: Ordering[T]): Unit = {
+  def test5[T: Ordering : ClassTag](first: T, second: T)(implicit ordering: Ordering[T]): Unit = {
     println("-------test5---------")
     val arr = new Array[T](2)
     val small = if (ordering.compare(first, second) < 0) first else second
     println(arr)
     println(small)
+  }
+
+  def test6[T: Ordering](first: T, second: T): Unit = {
+    println("-------test6---------")
+    println(first + ", " + second)
   }
 
 }

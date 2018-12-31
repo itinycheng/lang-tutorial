@@ -14,8 +14,15 @@ object GenericMain2 {
   def main(args: Array[String]): Unit = {
     test0(new Orange)
     test1(List(new Orange, new Apple))
-    test2(List(new Orange, new Apple))
+    test2(List[Fruit](new Orange, new Apple))
 
+    test3(1, List(new Apple))
+    test4((str: String) => str.toInt)
+
+    // both of value & function are valid, why ?
+    // decompile: both of the input are function(()=>Int)
+    println(Option(1).getOrElse(1))
+    println(Option(1).getOrElse(() => 1))
   }
 
   /**
@@ -45,6 +52,16 @@ object GenericMain2 {
     lis.foreach(println)
   }
 
+  /**
+    * compare to [[test2]]
+    */
+  def test3[A, B <: A](a: A, b: B): Unit = {
+    println(a + ", " + b)
+  }
+
+  def test4(f: String Function1 Int): Unit = {
+    println(f("1"))
+  }
   /*// <%< has been deprecated
   def test2[T](list: List[T])(implicit ev: T <%< Juice): Unit = {
     println("-------test1---------")
