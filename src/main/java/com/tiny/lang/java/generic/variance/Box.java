@@ -27,13 +27,13 @@ public class Box<T> {
      * entity classes
      */
 
-    class Fuel {
+    static class Fuel {
     }
 
-    class Plant extends Fuel {
+    static class Plant extends Fuel {
     }
 
-    class Bamboo extends Plant {
+    static class Bamboo extends Plant {
 
     }
 }

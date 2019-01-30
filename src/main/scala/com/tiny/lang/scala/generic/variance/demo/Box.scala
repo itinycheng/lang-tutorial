@@ -6,7 +6,7 @@ import scala.collection.mutable.ListBuffer
   * instances of Box are read-only because of covariance
   *
   */
-class Box[+T](list: List[T]) {
+class Box[+T](items: T*) {
 
   /**
     * compile error: because of covariance is readonly
@@ -18,9 +18,9 @@ class Box[+T](list: List[T]) {
     * def addList(lis: ListBuffer[_ <: T]): Unit = list ++= lis
     */
 
-  def head: T = list.head
+  def head: T = items.head
 
-  def foreach[U](f: T => U): Unit = list.foreach(f)
+  def foreach[U](f: T => U): Unit = items.foreach(f)
 
   def accept[R](boxVisitor: BoxVisitor[T, R]): R = {
     val list = new ListBuffer[R]
@@ -32,15 +32,15 @@ class Box[+T](list: List[T]) {
 
 object Box {
 
-  def apply[T](list: List[T]): Box[T] = new Box(list)
+  def apply[T](ts: T*): Box[T] = new Box(ts: _*)
 
 }
 
 class Fuel
 
-class Plant
+class Plant extends Fuel
 
-class Bamboo
+class Bamboo extends Plant
 
 class Energy
 
