@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * stack memory have no relation with heap and off-heap,
  * but where the stack memory really allocated ?
+ * link：https://docs.oracle.com/en/java/javase/13/vm/native-memory-tracking.html#GUID-710CAEA1-7C6D-4D80-AB0C-B0958E329407
  *
  * @author tiny
  */
