@@ -1,9 +1,10 @@
 jvm-lang-tutorial
 ==================
-code about java and scala's features
+code about java and scala's features.
+maybe there will be more jvm lang in the future. 
 
 ### build env
-- `Java(TM) SE Runtime Environment 18.9 (build 11+28)`
+- `OpenJDK Runtime Environment GraalVM CE 20.0.0 (build 11.0.6+9-jvmci-20.0-b02)`
 - `Scala-2.11.12`
-- `apache-maven-3.5.0`
-- `IntelliJ IDEA-2018.2.5`
+- `apache-maven-3.6.1`
+- `IntelliJ IDEA-2020`

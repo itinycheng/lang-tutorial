@@ -13,8 +13,12 @@ import java.util.List;
 public class StackMemory {
 
     /**
+     *
      * jvm configuration:
      * -Xmx100m -Xms100m -Xss5m -XX:MaxDirectMemorySize=10m -XX:NativeMemoryTracking=detail
+     *
+     * cmd:
+     * jcmd 3379 VM.native_memory scale=MB
      */
     public static void main(String[] args) {
         List<Thread> list = new ArrayList<>(10000);

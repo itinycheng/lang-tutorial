@@ -63,7 +63,7 @@ public class GenericMain {
     }
 
     /**
-     * support add(Apple|Fruit), error will be found when add(Fruit)
+     * support add(Apple|Fruit), error will be found when add(Food)
      * 猜测可能因为Apple的父类可能不止一个，其致使语法层防止歧义行为而做限制；
      * 另外最顶层的父类是Object，若所有List中的元素当做Object看待，泛型也没什么存在价值；
      * maybe the reason of allow add() is Fruit & subclasses can cast to Fruit;

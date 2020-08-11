@@ -5,6 +5,7 @@ import com.tiny.lang.scala.generic.Medicine;
 import com.tiny.lang.scala.generic.Orange;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class App {
         test(Collections.singletonList(new Orange()));
         //System.out.println(objects);
         Integer[] integers = test(1, 2);
-        System.out.println(integers);
+        System.out.println(Arrays.toString(integers));
     }
 
     private static <T extends Fruit & Medicine> void test(List<T> list) {

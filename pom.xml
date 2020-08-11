@@ -61,6 +61,8 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>compile</goal>
                             <goal>testCompile</goal>
