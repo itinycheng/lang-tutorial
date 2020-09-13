@@ -28,7 +28,7 @@ public class MainRunner {
         UserJarClassLoader loader = new UserJarClassLoader(mainThreadClassLoader, allowedPackages);
         Files.find(Paths.get(target), 1,
                 (path, ignored) -> path.toString().endsWith(".jar")
-        ).forEach(path -> loader.addResource(path.toFile().getPath()));
+        ).forEach(path -> loader.addResource(path.toString()));
 
         // test case 1
         // execute function on specified classloader

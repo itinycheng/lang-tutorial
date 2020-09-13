@@ -26,16 +26,16 @@ public class UserJarClassLoader extends URLClassLoader {
         this.allowedPackages = allowedPackages;
     }
 
-    public void addResource(String jarPath) {
+    public void addResource(final String jarPath) {
         try {
-            super.addURL(new File(jarPath).toURL());
+            super.addURL(new File(jarPath).toURI().toURL());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+    protected Class<?> loadClass(final String name, final boolean resolve) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
             Class<?> c = findLoadedClass(name);
             if (c == null && isAllowedPackages(name)) {
@@ -55,7 +55,7 @@ public class UserJarClassLoader extends URLClassLoader {
         }
     }
 
-    private boolean isAllowedPackages(String name) {
+    private boolean isAllowedPackages(final String name) {
         if (allowedPackages != null) {
             return Stream.of(allowedPackages).allMatch(s -> s.startsWith(name));
         } else {
